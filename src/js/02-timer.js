@@ -2,6 +2,8 @@ import flatpickr from 'flatpickr';
 
 import 'flatpickr/dist/flatpickr.min.css';
 
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 const startButtonRef = document.querySelector('button[data-start]');
 startButtonRef.disabled = true;
 
@@ -25,8 +27,8 @@ const options = {
     // console.log(selectedDates[0]);
     // console.log(new Date());
     if (selectedDates[0] < new Date()) {
+      Notify.warning('Please choose a date in the future');
       startButtonRef.disabled = true;
-      window.alert('Please choose a date in the future');
     }
     startButtonRef.disabled = false;
     startButtonRef.addEventListener('click', () => {
